@@ -1,0 +1,6 @@
+a = str(input('escriba su nombre completo:'))
+b = str(input('escriba sus apellidos completos:'))
+c = str(input('esciba su profesion:'))
+d = int(input('el año en el que nacio:'))
+e = int (2025-d)
+print('el (la)''', c,'', a,'', b,'tiene', e,'años')
