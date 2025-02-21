@@ -1,9 +1,7 @@
 def generar_llaves(equipos):
-    # Verificar que el número de equipos sea válido (debe ser 16 para octavos de final)
     if len(equipos) != 16:
         raise ValueError("Debe haber exactamente 16 equipos para octavos de final.")
 
-    # Inicializar el diccionario para almacenar las llaves
     llaves = {
         "Octavos de final": {},
         "Cuartos de final": {},
@@ -12,7 +10,6 @@ def generar_llaves(equipos):
         "Tercer lugar": {}
     }
 
-    # Función para que el usuario introduzca los goles y determine el ganador
     def introducir_resultado(equipo1, equipo2):
         while True:
             try:
@@ -27,7 +24,6 @@ def generar_llaves(equipos):
                 print("Error: Ingresa un número válido de goles.")
     import random  # Importa la librería para mezclar la lista
 
-# Convertir las claves del diccionario en una lista y mezclarla
     equipos_list = list(equipos.keys())
     random.shuffle(equipos_list)
     # Generar los partidos de octavos de final
@@ -46,7 +42,6 @@ def generar_llaves(equipos):
         }
         ganadores_octavos.append(ganador)
 
-    # Generar los partidos de cuartos de final
     ganadores_cuartos = []
     for i in range(4):
         partido = f"Partido {i+1}"
@@ -62,7 +57,6 @@ def generar_llaves(equipos):
         }
         ganadores_cuartos.append(ganador)
 
-    # Generar los partidos de semifinales
     ganadores_semifinales = []
     for i in range(2):
         partido = f"Partido {i+1}"
@@ -78,7 +72,6 @@ def generar_llaves(equipos):
         }
         ganadores_semifinales.append(ganador)
 
-    # Generar la final
     equipo1, equipo2 = ganadores_semifinales[0], ganadores_semifinales[1]
     print(f"\nFinal: {equipo1} vs {equipo2}")
     goles_equipo1, goles_equipo2, campeon = introducir_resultado(equipo1, equipo2)
@@ -91,7 +84,7 @@ def generar_llaves(equipos):
         "Ganador": campeon
     }
 
-    # Generar el partido por el tercer lugar (entre los perdedores de las semifinales)
+    
     perdedor_semifinal1 = equipo1 if campeon != equipo1 else equipo2
     perdedor_semifinal2 = ganadores_cuartos[2] if perdedor_semifinal1 == ganadores_cuartos[0] else ganadores_cuartos[3]
     print(f"\nTercer lugar: {perdedor_semifinal1} vs {perdedor_semifinal2}")
@@ -106,7 +99,7 @@ def generar_llaves(equipos):
 
     return llaves, campeon, subcampeon, tercer_lugar
 
-# Diccionario de equipos (debe tener 16 equipos)
+
 equipos = {
     "Países Bajos": 0,
     "Estados Unidos": 0,
@@ -125,8 +118,6 @@ equipos = {
     "Portugal": 0,
     "Suiza": 0
 }
-
-# Generar las llaves del torneo y obtener los resultados
 llaves_torneo, campeon, subcampeon, tercer_lugar = generar_llaves(equipos)
 
 print("\nResumen del torneo:")
